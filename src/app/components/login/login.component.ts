@@ -12,7 +12,6 @@ import {User} from '../../interfaces/user';
 export class LoginComponent implements OnInit {
 
   public loginFailed: boolean = false;
-  public userRegistered: boolean = false;
 
   constructor(
     private router: Router,

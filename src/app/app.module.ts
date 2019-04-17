@@ -14,6 +14,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ReportComponent } from './components/report/report.component';
 import { CarService } from './services/car.service';
 import { LoginService } from './services/login.service';
+import { CarComponentComponent } from './components/car-component/car-component.component';
 
 
 
@@ -27,7 +28,8 @@ import { LoginService } from './services/login.service';
     AdminAddCarComponent,
     AdminEditCarComponent,
     NavBarComponent,
-    ReportComponent
+    ReportComponent,
+    CarComponentComponent
   ],
   imports: [
     BrowserModule,

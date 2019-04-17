@@ -1,3 +1,15 @@
-<p>
-  admin-cars-list works!
-</p>
+<div class="row">
+    <div class="col-xs-12">
+        <div *ngFor="let c of cars" class="panel panel-info">
+            <div class="panel-heading">{{c.brand}} - {{c.model}}
+                <ul class="list-group">
+                    <li class="list-group-item">Year built: {{c.year}}</li>
+                    <li class="list-group-item">Price: {{c.price | currency: 'EUR'}}</li>
+                    <li class="list-group-item">Km: {{c.km}}</li>
+                    <li class="list-group-item">Engine: {{c.engine.fuel}} | {{c.engine.power}} hp | {{c.engine.consumption}} (l/100km)
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
