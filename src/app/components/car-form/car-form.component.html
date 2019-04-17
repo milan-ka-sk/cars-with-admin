@@ -1,0 +1,92 @@
+<div class="well">
+
+    <form #form="ngForm" (ngSubmit)="processForm(form.value); form.reset();" novalidate>
+        <h2 *ngIf="!isEdit">Add Car</h2>
+        <h2 *ngIf="isEdit">Edit Car</h2>
+        <fieldset>
+            <legend>Car</legend>
+            <input type="hidden" name="id" ngModel>
+            <div class="form-group" [ngClass]="{'has-error': brand.invalid && (brand.touched || brand.dirty)}">
+                <label for="brand">Brand:</label>
+                <select name="brand" class="form-control" ngModel #brand="ngModel" id="brand" required (change)="onBrandChange($event)">
+           <option value="">--Empty--</option>
+          <option value="{{b.brand}}" *ngFor="let b of brands; let i = index">
+            {{b.brand}}</option>
+         </select>
+                <div *ngIf="brand.invalid && (brand.touched || brand.dirty)" class="required"> Field is required.</div>
+
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error': model.invalid && (model.touched || model.dirty)}">
+                <label for="model">Model:</label>
+                <select name="model" class="form-control" ngModel #model="ngModel" id="model" required>
+          <option value="">--Empty--</option>
+          <option value="{{m}}" *ngFor="let m of curModels">
+            {{m}}</option>
+         </select>
+                <div *ngIf="model.invalid && (model.touched || model.dirty)" class="required"> Field is required.</div>
+
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-6" [ngClass]="{'has-error': year.invalid && (year.touched || year.dirty)}">
+                    <label for="year">Year:</label>
+                    <input type="number" class="form-control" ngModel name="year" id="year" #year="ngModel" required>
+                    <div *ngIf="year.invalid && (year.touched || year.dirty)" class="required"> Field is required.</div>
+                </div>
+
+                <div class="form-group col-sm-6" [ngClass]="{'has-error': price.invalid && (price.touched || price.dirty)}">
+                    <label for="price">Price (EUR):</label>
+                    <input type="number" class="form-control" ngModel name="price" id="price" #price="ngModel" required>
+                    <div *ngIf="price.invalid && (price.touched || price.dirty)" class="required"> Field is required.</div>
+                </div>
+
+
+            </div>
+            <div class="form-group  " [ngClass]="{'has-error': km.invalid && (km.touched || km.dirty)}">
+                <label for="km">Km:</label>
+                <input type="number" class="form-control" ngModel name="km" id="km" #km="ngModel" required>
+                <div *ngIf="km.invalid && (km.touched || km.dirty)" class="required"> Field is required.</div>
+            </div>
+        </fieldset>
+        <fieldset ngModelGroup="engine">
+            <legend>Engine</legend>
+            <div class="form-group" [ngClass]="{'has-error': fuel.invalid && (fuel.touched || fuel.dirty)}">
+                <label for="fuel">Fuel:</label>
+                <select name="fuel" class="form-control" ngModel id="fuel" #fuel="ngModel" required>
+          <option value="">--Empty--</option>
+          <option value="petrol">Petrol</option>
+          <option value="diesel">Diesel</option>
+          <option value="electric">Electric</option>
+        </select>
+                <div *ngIf="fuel.invalid && (fuel.touched || fuel.dirty)" class="required"> Field is required.</div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-6" [ngClass]="{'has-error': power.invalid && (power.touched || power.dirty)}">
+                    <label for="power">Power (hp):</label>
+                    <input type="number" class="form-control" ngModel name="power" #power="ngModel" id="power" required>
+                    <div *ngIf="power.invalid && (power.touched || power.dirty)" class="required"> Field is required.</div>
+                </div>
+
+                <div class="form-group col-sm-6" [ngClass]="{'has-error': consumption.invalid && (consumption.touched || consumption.dirty)}">
+                    <label for="consumption">Consumption (l/100km):</label>
+                    <input type="number" class="form-control" ngModel name="consumption" #consumption="ngModel" id="consumption" required>
+                    <div *ngIf="consumption.invalid && (consumption.touched || consumption.dirty)" class="required"> Field is required.
+                    </div>
+                </div>
+
+
+            </div>
+        </fieldset>
+
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary">Submit</button>
+
+    </form>
+
+
+
+
+    <!-- {{form.value | json}} -->
+
+</div>
