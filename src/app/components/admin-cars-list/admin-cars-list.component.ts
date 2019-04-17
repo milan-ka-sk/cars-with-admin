@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Car } from '../../interfaces/car';
+import { CarService } from '../../services/car.service';
 
 
 @Component({
@@ -9,12 +11,24 @@ import { Router } from '@angular/router';
 })
 export class AdminCarsListComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  cars: Car[] = [];
+
+  constructor(
+    private router: Router,
+    private carService: CarService
+  ) { }
 
   ngOnInit() {
     if(!localStorage.getItem("rightsToLogin")) {
       this.router.navigateByUrl('/login');
     }
+    this.getCars();
+  }
+
+  getCars():void {
+
+    this.cars = this.carService.getCars();
+      
   }
 
 }

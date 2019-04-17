@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'admin', redirectTo:"admin/cars"},
   { path: 'admin/cars', component: AdminCarsListComponent},
   { path: 'admin/add-car', component: AdminAddCarComponent},
-  { path: 'admin/edit-car', component: AdminEditCarComponent}
+  { path: 'admin/edit-car/:id', component: AdminEditCarComponent},
+  {path: '**', redirectTo:"admin/cars"}
 ];
 
 @NgModule({

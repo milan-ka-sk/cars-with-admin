@@ -23,7 +23,6 @@ export class CarsListComponent implements OnInit {
   getCars():void {
 
     this.cars = this.carService.getCars();
-    console.log(this.cars);
       
   }
 

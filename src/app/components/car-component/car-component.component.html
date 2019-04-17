@@ -1,11 +1,14 @@
-<div class="panel panel-info">
-    <div class="panel-heading">{{car.brand}} - {{car.model}}
-        <ul class="list-group">
-            <li class="list-group-item">Year built: {{car.year}}</li>
-            <li class="list-group-item">Price: {{car.price | currency: 'EUR'}}</li>
-            <li class="list-group-item">Km: {{car.km}}</li>
-            <li class="list-group-item">Engine: {{car.engine.fuel}} | {{car.engine.power}} hp | {{car.engine.consumption}} (l/100km)
-            </li>
-        </ul>
-    </div>
+<div class="car">
+    <h2 class="car-heading">
+        {{ car.brand }} - <span>{{ car.model }}</span>
+    </h2>
+    <ul class="list-group">
+        <li class="list-group-item">Year built: {{ car.year }}</li>
+        <li class="list-group-item">Price: {{ car.price | currency: "EUR" }}</li>
+        <li class="list-group-item">Km: {{ car.km }}</li>
+        <li class="list-group-item">
+            Engine: {{ car.engine.fuel }} | {{ car.engine.power }} hp | {{ car.engine.consumption }} (l/100km)
+        </li>
+    </ul>
+    <ng-content></ng-content>
 </div>
