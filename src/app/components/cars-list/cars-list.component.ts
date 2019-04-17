@@ -10,7 +10,7 @@ import { CarService } from '../../services/car.service';
 })
 export class CarsListComponent implements OnInit {
 
-  cars: Car[] = [];
+  private cars : any;
 
   constructor(
     private carService: CarService
@@ -21,9 +21,9 @@ export class CarsListComponent implements OnInit {
   }
 
   getCars():void {
-
-    this.cars = this.carService.getCars();
-      
+    this.carService.getCars().subscribe((cars) => {
+      this.cars = cars;
+    });
   }
 
 }

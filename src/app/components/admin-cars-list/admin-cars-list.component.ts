@@ -11,7 +11,7 @@ import { CarService } from '../../services/car.service';
 })
 export class AdminCarsListComponent implements OnInit {
 
-  cars: Car[] = [];
+  private cars: any;
 
   constructor(
     private router: Router,
@@ -26,9 +26,9 @@ export class AdminCarsListComponent implements OnInit {
   }
 
   getCars():void {
-
-    this.cars = this.carService.getCars();
-      
+    this.carService.getCars().subscribe((cars) => {
+      this.cars = cars;
+    });
   }
 
 }

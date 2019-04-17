@@ -9,7 +9,7 @@ import { CarService } from '../../services/car.service';
 })
 export class ReportComponent implements OnInit {
 
-  cars: Car[];
+  private cars: any;
   totalPrice = 0;
   oldest: Car = null;
   mostUsed: Car = null;
@@ -45,8 +45,11 @@ export class ReportComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cars = this.carService.getCars();
-    this.calculate();
+    this.carService.getCars().subscribe((cars) => {
+      this.cars = cars;
+      this.calculate();
+    });
+    
   }
 
 }

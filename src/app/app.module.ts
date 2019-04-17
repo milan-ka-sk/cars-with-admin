@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+import { HttpClientModule }    from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CarsListComponent } from './components/cars-list/cars-list.component';
@@ -37,6 +38,7 @@ import { CarFormComponent } from './components/car-form/car-form.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RoutingModule
   ],
   providers: [CarService, LoginService, BrandsService],
