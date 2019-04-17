@@ -8,6 +8,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { AdminCarsListComponent } from './components/admin-cars-list/admin-cars-list.component';
 import { AdminAddCarComponent } from './components/admin-add-car/admin-add-car.component';
 import { AdminEditCarComponent } from './components/admin-edit-car/admin-edit-car.component';
+import { RoutingModule } from './routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdminEditCarComponent } from './components/admin-edit-car/admin-edit-ca
     AdminEditCarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
