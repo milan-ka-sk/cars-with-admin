@@ -4,8 +4,8 @@
     <div class="col-xs-12">
         <app-car-component [car]="c" *ngFor="let c of cars">
             <div class="clearfix">
-                <a type="button" class="btn btn-warning btn-xs" [routerLink]="['/admin/edit-car', c.id]">Edit</a>
-                <button type="button" class="btn btn-danger btn-xs pull-right" (click)="deleteCar(c.id)">Delete</button>
+                <a type="button" class="btn btn-warning btn-xs" [routerLink]="['/admin/edit-car', c._id]">Edit</a>
+                <button type="button" class="btn btn-danger btn-xs pull-right" (click)="deleteCar(c._id)">Delete</button>
             </div>
         </app-car-component>
     </div>

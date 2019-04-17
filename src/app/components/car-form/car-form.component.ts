@@ -2,6 +2,7 @@ import { Component, OnInit, Input, EventEmitter} from '@angular/core';
 import { Car } from '../../interfaces/car';
 import { CarService } from '../../services/car.service';
 import { BrandsService } from '../../services/brands.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-car-form',
@@ -13,9 +14,20 @@ export class CarFormComponent implements OnInit {
   @Input() isEdit: boolean = false;
   private brands: any[];
   private curModels: string[] = [];
+  private carID: string;
 
+  // for edit prefill
+  private editBrand: string;
+  private editModel: string;
+  private editKm: string;
+  private editYear: number;
+  private editPrice: number;
+  private editPower: number;
+  private editConsumption: number;
+  private editFuel: string;
 
   constructor(
+    private route: ActivatedRoute,
     private brandsService: BrandsService,
     private carService: CarService
   ) { }
@@ -24,14 +36,24 @@ export class CarFormComponent implements OnInit {
     this.brands = this.brandsService.getBrands();
     
     if(this.isEdit){
-      // get car with id
-      
-      // prefillForm();
+      this.route.params.subscribe(params => {
+        // get id
+        this.carID = params["id"];
+        // get car with id
+        this.carService.getCar(this.carID).subscribe(car => {
+          this.editBrand = car["brand"];
+          this.editModel = car["model"];
+          this.editKm = car["km"];
+          this.editYear = car["year"];
+          this.editPrice = car["price"];
+          this.editPower = car["engine"]["power"];
+          this.editConsumption = car["engine"]["consumption"];
+          this.editFuel = car["engine"]["fuel"];
+          this.curModels = this.getCurModels(this.editBrand);
+           
+        })
+      });
     }
-  }
-
-  prefillForm(car: Car){
-    
   }
 
   processForm({form, value, valid}) {
@@ -49,48 +71,8 @@ export class CarFormComponent implements OnInit {
     } else{
       console.log("Form is not valid");
     }
-    //form.reset();
-
-    // this.carService.addCar(car)
-    //   .subscribe(
-    //     (car) => {
-    //       console.log("Car added!");
-    //       this.update.emit(true);
-    //     },
-    //     err => {
-    //       console.log(err);
-    //     }
-    //   )
-  }
-
-  addPage({form, value, valid}){
-    
-    if(valid){
-      value.content = CKEDITOR.instances.content.getData();
-      console.log(value);
-      this.pageService.postAddPage(value).subscribe(res => {
-        if(res == 'pageExists'){
-          this.errorMsg = true;
-          setTimeout(function(){
-            this.errorMsg = false;
-          }.bind(this), 2000);
-        } else{
-          this.successMsg = true;
-          setTimeout(function(){
-            this.successMsg = false;
-          }.bind(this), 2000);
-
-          CKEDITOR.instances.content.setData(''); // i.e. clear the textfield
-
-          this.pageService.getPages().subscribe(pages => {
-            this.pageService.pagesBS.next(pages);
-          })
-        }
-      });
-    } else{
-      console.log("Form is not valid");
-    }
     form.reset();
+    
   }
 
   onBrandChange(e): void {
@@ -101,5 +83,16 @@ export class CarFormComponent implements OnInit {
       console.log(i);
       this.curModels = this.brands[i-1].models;  // because select has 1 more field (--Empty--) than data
     }
+  }
+
+  getCurModels(brandName: string){
+    let tmp = this.brands.filter(
+      (brand) => {
+        return brand["brand"] == brandName;
+      }
+    )
+    console.log(tmp[0].models);
+    return tmp[0].models;
+    //console.log("xxx " + tmp.models);
   }
 }
