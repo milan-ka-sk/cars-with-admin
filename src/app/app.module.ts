@@ -14,6 +14,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ReportComponent } from './components/report/report.component';
 import { CarService } from './services/car.service';
 import { LoginService } from './services/login.service';
+import { BrandsService } from './services/brands.service';
 import { CarComponentComponent } from './components/car-component/car-component.component';
 
 
@@ -36,7 +37,7 @@ import { CarComponentComponent } from './components/car-component/car-component.
     FormsModule,
     RoutingModule
   ],
-  providers: [CarService, LoginService],
+  providers: [CarService, LoginService, BrandsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
