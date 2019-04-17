@@ -15,13 +15,11 @@
                 <li routerLinkActive="active"><a [routerLink]="['/report']">Report</a></li>
             </ul>
 
-            <!-- <ul class="nav navbar-nav navbar-right" *ngIf="!userLoggedIn"> -->
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right" *ngIf="!isLoggedIn">
                 <li><a routerLink="/login">Login</a></li>
             </ul>
-            <!-- <ul class="nav navbar-nav navbar-right" *ngIf="userLoggedIn"> -->
-            <ul class="nav navbar-nav navbar-right">
-                <li><a routerLink="/logout">Hi USER, logout</a></li>
+            <ul class="nav navbar-nav navbar-right" *ngIf="isLoggedIn">
+                <li><a routerLink="/logout">Logout</a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->

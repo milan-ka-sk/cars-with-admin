@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CarsListComponent } from './components/cars-list/cars-list.component';
@@ -12,6 +13,7 @@ import { RoutingModule } from './routing.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ReportComponent } from './components/report/report.component';
 import { CarService } from './services/car.service';
+import { LoginService } from './services/login.service';
 
 
 
@@ -29,9 +31,10 @@ import { CarService } from './services/car.service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RoutingModule
   ],
-  providers: [CarService],
+  providers: [CarService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

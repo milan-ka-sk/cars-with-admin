@@ -3,3 +3,4 @@ export interface Engine {
     power: number;
     consumption: number; 
 }
+                      
