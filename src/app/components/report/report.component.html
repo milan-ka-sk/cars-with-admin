@@ -1,3 +1,27 @@
-<p>
-  report works!
-</p>
+<div>
+    <h1>Report</h1>
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <td>Oldest Car:</td>
+                <td>{{oldest?.brand}} - {{oldest?.model}} (Year built: {{oldest?.year}}) </td>
+            </tr>
+            <tr>
+                <td>Most Used Car:</td>
+                <td>{{mostUsed?.brand}} - {{mostUsed?.model}} ({{mostUsed?.km}}km) </td>
+            </tr>
+            <tr>
+                <td>Most Expensive Car:</td>
+                <td>{{mostExpensive?.brand}} - {{mostExpensive?.model}} ({{mostExpensive?.price | currency:'EUR'}})</td>
+            </tr>
+            <tr>
+                <td>Most Efficient Car:</td>
+                <td>{{mostEfficient?.brand}} - {{mostEfficient?.model}} ({{mostEfficient?.engine.consumption}} l/100km)</td>
+            </tr>
+            <tr>
+                <td>Total Price Of All Cars:</td>
+                <td>{{totalPrice | currency: 'EUR'}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

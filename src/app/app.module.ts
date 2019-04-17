@@ -11,6 +11,9 @@ import { AdminEditCarComponent } from './components/admin-edit-car/admin-edit-ca
 import { RoutingModule } from './routing.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ReportComponent } from './components/report/report.component';
+import { CarService } from './services/car.service';
+
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { ReportComponent } from './components/report/report.component';
     BrowserModule,
     RoutingModule
   ],
-  providers: [],
+  providers: [CarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
