@@ -7,10 +7,13 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { AdminCarsListComponent } from './components/admin-cars-list/admin-cars-list.component';
 import { AdminAddCarComponent } from './components/admin-add-car/admin-add-car.component';
 import { AdminEditCarComponent } from './components/admin-edit-car/admin-edit-car.component';
+import { ReportComponent } from './components/report/report.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo:"cars", pathMatch: 'full'},
   { path: 'cars', component: CarsListComponent},
+  { path: 'report', component: ReportComponent},
   { path: 'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent},
   { path: 'admin', redirectTo:"admin/cars"},

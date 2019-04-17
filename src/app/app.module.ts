@@ -9,6 +9,8 @@ import { AdminCarsListComponent } from './components/admin-cars-list/admin-cars-
 import { AdminAddCarComponent } from './components/admin-add-car/admin-add-car.component';
 import { AdminEditCarComponent } from './components/admin-edit-car/admin-edit-car.component';
 import { RoutingModule } from './routing.module';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { RoutingModule } from './routing.module';
     LogoutComponent,
     AdminCarsListComponent,
     AdminAddCarComponent,
-    AdminEditCarComponent
+    AdminEditCarComponent,
+    NavBarComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

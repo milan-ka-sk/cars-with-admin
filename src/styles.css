@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+h1,
+h2 {
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+
+.navbar-inverse .navbar-brand:focus,
+.navbar-inverse .navbar-brand:hover {
+    color: #9d9d9d;
+}
