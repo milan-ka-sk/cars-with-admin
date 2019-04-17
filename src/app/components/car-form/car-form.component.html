@@ -1,11 +1,11 @@
 <div class="well">
 
-    <form #form="ngForm" (ngSubmit)="processForm(form.value); form.reset();" novalidate>
+    <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
         <h2 *ngIf="!isEdit">Add Car</h2>
         <h2 *ngIf="isEdit">Edit Car</h2>
         <fieldset>
             <legend>Car</legend>
-            <input type="hidden" name="id" ngModel>
+
             <div class="form-group" [ngClass]="{'has-error': brand.invalid && (brand.touched || brand.dirty)}">
                 <label for="brand">Brand:</label>
                 <select name="brand" class="form-control" ngModel #brand="ngModel" id="brand" required (change)="onBrandChange($event)">
@@ -86,7 +86,4 @@
 
 
 
-
-    <!-- {{form.value | json}} -->
-
-</div>
+    {{form.value | json}}

@@ -12,4 +12,7 @@ export class CarService {
   getCars() {
     return this.http.get('http://localhost:5000/cars');
   }
+  addCar(car){
+    return this.http.post('http://localhost:5000/cars', car);
+  }
 }
