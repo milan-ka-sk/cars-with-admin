@@ -8,7 +8,7 @@
             <div class="form-group" [ngClass]="{'has-error': brand.invalid && (brand.touched || brand.dirty)}">
                 <label for="brand">Brand:</label>
                 <select name="brand" class="form-control" [(ngModel)]="editBrand" #brand="ngModel" id="brand" required (change)="onBrandChange($event)">
-           <option value="">--Empty--</option>
+           <!-- <option value="">--Empty--</option> -->
            
           <option value="{{b.brand}}" *ngFor="let b of brands; let i = index">
             {{b.brand}}</option>
@@ -20,7 +20,7 @@
             <div class="form-group" [ngClass]="{'has-error': model.invalid && (model.touched || model.dirty)}">
                 <label for="model">Model:</label>
                 <select name="model" class="form-control" [(ngModel)]="editModel" #model="ngModel" id="model" required>
-          <option value="">--Empty--</option>
+          <!-- <option value="">--Empty--</option> -->
           <option value="{{m}}" *ngFor="let m of curModels">
             {{m}}</option>
          </select>
@@ -54,7 +54,7 @@
             <div class="form-group" [ngClass]="{'has-error': fuel.invalid && (fuel.touched || fuel.dirty)}">
                 <label for="fuel">Fuel:</label>
                 <select name="fuel" class="form-control" [(ngModel)]="editFuel" id="fuel" #fuel="ngModel" required>
-          <option value="">--Empty--</option>
+          <!-- <option value="">--Empty--</option> -->
           <option value="petrol">Petrol</option>
           <option value="diesel">Diesel</option>
           <option value="electric">Electric</option>

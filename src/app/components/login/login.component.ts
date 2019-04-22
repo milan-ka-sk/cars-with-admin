@@ -20,19 +20,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    if(localStorage.getItem("rightsToLogin")) {
+    if(localStorage.getItem("loggedIn")) {
       this.router.navigateByUrl('admin/cars');
     }
   }
 
   login({value, valid}){
     if(valid){
-      
+
       let canLogin = this.loginService.login(value); // returns true or false
 
       if(canLogin) {
 
-        localStorage.setItem("rightsToLogin", "yes");
+        localStorage.setItem("loggedIn", "yes");
         this.router.navigateByUrl('admin/cars');
 
       } else{

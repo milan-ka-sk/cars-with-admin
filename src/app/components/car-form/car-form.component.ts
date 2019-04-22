@@ -3,6 +3,8 @@ import { Car } from '../../interfaces/car';
 import { CarService } from '../../services/car.service';
 import { BrandsService } from '../../services/brands.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-car-form',
@@ -11,46 +13,46 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CarFormComponent implements OnInit {
 
-  @Input() isEdit: boolean = false;
-  private brands: any[];
-  private curModels: string[] = [];
-  private carID: string;
+  @Input() isEdit = false;
+  brands: any[];
+  curModels: string[] = [];
+  carID: string;
 
   // for edit prefill
-  private editBrand: string;
-  private editModel: string;
-  private editKm: string;
-  private editYear: number;
-  private editPrice: number;
-  private editPower: number;
-  private editConsumption: number;
-  private editFuel: string;
+   editBrand: string;
+   editModel: string;
+   editKm: string;
+   editYear: number;
+   editPrice: number;
+   editPower: number;
+   editConsumption: number;
+   editFuel: string;
 
   constructor(
     private route: ActivatedRoute,
     private brandsService: BrandsService,
-    private carService: CarService
+    private carService: CarService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.brands = this.brandsService.getBrands();
-    
     if(this.isEdit){
       this.route.params.subscribe(params => {
         // get id
-        this.carID = params["id"];
+        this.carID = params['id'];
         // get car with id
         this.carService.getCar(this.carID).subscribe(car => {
-          this.editBrand = car["brand"];
-          this.editModel = car["model"];
-          this.editKm = car["km"];
-          this.editYear = car["year"];
-          this.editPrice = car["price"];
-          this.editPower = car["engine"]["power"];
-          this.editConsumption = car["engine"]["consumption"];
-          this.editFuel = car["engine"]["fuel"];
+          this.editBrand = car['brand'];
+          this.editModel = car['model'];
+          this.editKm = car['km'];
+          this.editYear = car['year'];
+          this.editPrice = car['price'];
+          this.editPower = car['engine']['power'];
+          this.editConsumption = car['engine']['consumption'];
+          this.editFuel = car['engine']['fuel'];
           this.curModels = this.getCurModels(this.editBrand);
-           
+
         })
       });
     }
@@ -59,36 +61,63 @@ export class CarFormComponent implements OnInit {
   processForm({form, value, valid}) {
 
     if(valid){
-      this.carService.addCar(value)
-      .subscribe(
-        (v) => {
-          console.log("Car added! " + v );
-        },
-        err => {
-          console.log(err);
-        }
-      )
+      if(!this.isEdit){
+        this.carService.addCar(value)
+        .subscribe(
+          (v) => {
+            console.log('Car added! ' + v );
+            this.router.navigateByUrl('/admin/cars');
+
+          },
+          err => {
+            console.log(err);
+          }
+        )
+      } else {
+        console.log('PUT');
+        console.log(value );
+        console.log(this.carID )
+
+        this.carService.updateCar(value, this.carID);
+        // .subscribe(
+        //   (v) => {
+        //     console.log("Car added! " + v );
+        //     this.router.navigateByUrl('/admin/cars');
+
+        //   },
+        //   err => {
+        //     console.log(err);
+        //   }
+
+        // )
+
+      }
     } else{
       console.log("Form is not valid");
     }
     form.reset();
-    
+
   }
 
   onBrandChange(e): void {
+
+    console.log(e.target.value);
+    const brandName = e.target.value;
+    this.curModels = this.getCurModels(brandName)
+
+
     //brand index
-    
-    let i = e.target.selectedIndex;
-    if(i != 0){
-      console.log(i);
-      this.curModels = this.brands[i-1].models;  // because select has 1 more field (--Empty--) than data
-    }
+    // let i = e.target.selectedIndex;
+    // if(i != 0){
+    //   console.log(i);
+    //   this.curModels = this.brands[i-1].models;  // because select has 1 more field (--Empty--) than data
+    // }
   }
 
   getCurModels(brandName: string){
-    let tmp = this.brands.filter(
+    const tmp = this.brands.filter(
       (brand) => {
-        return brand["brand"] == brandName;
+        return brand['brand'] === brandName;
       }
     )
     console.log(tmp[0].models);

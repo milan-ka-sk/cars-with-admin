@@ -10,9 +10,9 @@ export class NavBarComponent implements OnInit {
   title = 'Cars';
 
   get isLoggedIn(){
-    console.log("get isLoggedIn ");
+   // console.log("get isLoggedIn ");
 
-    if(localStorage.getItem("rightsToLogin")) {
+    if(localStorage.getItem("loggedIn")) {
       return true;
     }
     return false;
@@ -21,7 +21,7 @@ export class NavBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   
+
   }
 
 }

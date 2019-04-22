@@ -6,7 +6,7 @@ import {carsData} from './test-data/cars-data';
 @Injectable()
 export class CarService {
 
-  private apiUrl: string = 'http://localhost:5000/cars';
+  private apiUrl = 'http://localhost:5000/cars';
 
   constructor(private http: HttpClient) {
   }
@@ -19,5 +19,13 @@ export class CarService {
   }
   addCar(car){
     return this.http.post(this.apiUrl, car);
+  }
+  updateCar(car, id){
+    // return this.http.post(this.apiUrl + "/" +  id + "?_method=PUT", car);
+    return this.http.post(this.apiUrl + "/" +  id, car);
+  }
+  deleteCar(id) {
+    console.log('car service, delete ' + id);
+    return this.http.delete(this.apiUrl + '/' + id);
   }
 }

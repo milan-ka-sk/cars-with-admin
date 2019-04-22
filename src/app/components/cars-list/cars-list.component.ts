@@ -10,7 +10,7 @@ import { CarService } from '../../services/car.service';
 })
 export class CarsListComponent implements OnInit {
 
-  private cars : any;
+  cars : any;
 
   constructor(
     private carService: CarService

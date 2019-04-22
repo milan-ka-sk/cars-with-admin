@@ -12,7 +12,7 @@ export class AdminEditCarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    if(!localStorage.getItem("rightsToLogin")) {
+    if(!localStorage.getItem("loggedIn")) {
       this.router.navigateByUrl('/login');
     }
   }

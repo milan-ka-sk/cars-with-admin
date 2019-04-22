@@ -11,7 +11,7 @@ import { CarService } from '../../services/car.service';
 })
 export class AdminCarsListComponent implements OnInit {
 
-  private cars: any;
+  public cars: any;
 
   constructor(
     private router: Router,
@@ -19,16 +19,26 @@ export class AdminCarsListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(!localStorage.getItem("rightsToLogin")) {
+    if(!localStorage.getItem("loggedIn")) {
       this.router.navigateByUrl('/login');
     }
     this.getCars();
   }
 
-  getCars():void {
+  getCars(): void {
     this.carService.getCars().subscribe((cars) => {
       this.cars = cars;
     });
+  }
+
+  deleteCar(id){
+    if(confirm('Confirm deletion')){
+      this.carService.deleteCar(id)
+      .subscribe((data)=>{
+        console.log("deleteCar " + data);
+        this.getCars();
+      });
+    }
   }
 
 }
