@@ -62,6 +62,7 @@ export class CarFormComponent implements OnInit {
 
     if(valid){
       if(!this.isEdit){
+        // add car
         this.carService.addCar(value)
         .subscribe(
           (v) => {
@@ -78,25 +79,17 @@ export class CarFormComponent implements OnInit {
         console.log(value );
         console.log(this.carID )
 
-        this.carService.updateCar(value, this.carID);
-        // .subscribe(
-        //   (v) => {
-        //     console.log("Car added! " + v );
-        //     this.router.navigateByUrl('/admin/cars');
-
-        //   },
-        //   err => {
-        //     console.log(err);
-        //   }
-
-        // )
-
-      }
+        //update car
+        this.carService.updateCar(value, this.carID)
+          .subscribe((res) => {
+            console.log(res);
+            this.router.navigateByUrl('/admin/cars');
+          });
+       }
     } else{
       console.log("Form is not valid");
     }
     form.reset();
-
   }
 
   onBrandChange(e): void {
@@ -104,14 +97,6 @@ export class CarFormComponent implements OnInit {
     console.log(e.target.value);
     const brandName = e.target.value;
     this.curModels = this.getCurModels(brandName)
-
-
-    //brand index
-    // let i = e.target.selectedIndex;
-    // if(i != 0){
-    //   console.log(i);
-    //   this.curModels = this.brands[i-1].models;  // because select has 1 more field (--Empty--) than data
-    // }
   }
 
   getCurModels(brandName: string){
@@ -122,6 +107,5 @@ export class CarFormComponent implements OnInit {
     )
     console.log(tmp[0].models);
     return tmp[0].models;
-    //console.log("xxx " + tmp.models);
   }
 }

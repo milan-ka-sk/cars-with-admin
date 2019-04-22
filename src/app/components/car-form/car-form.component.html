@@ -9,7 +9,7 @@
                 <label for="brand">Brand:</label>
                 <select name="brand" class="form-control" [(ngModel)]="editBrand" #brand="ngModel" id="brand" required (change)="onBrandChange($event)">
            <!-- <option value="">--Empty--</option> -->
-           
+
           <option value="{{b.brand}}" *ngFor="let b of brands; let i = index">
             {{b.brand}}</option>
          </select>
@@ -57,7 +57,6 @@
           <!-- <option value="">--Empty--</option> -->
           <option value="petrol">Petrol</option>
           <option value="diesel">Diesel</option>
-          <option value="electric">Electric</option>
         </select>
                 <div *ngIf="fuel.invalid && (fuel.touched || fuel.dirty)" class="required"> Field is required.</div>
             </div>
@@ -89,4 +88,4 @@
 
 
 
-{{form.value | json}}
+<!-- {{form.value | json}} -->

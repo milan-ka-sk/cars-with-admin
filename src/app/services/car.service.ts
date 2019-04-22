@@ -22,10 +22,10 @@ export class CarService {
   }
   updateCar(car, id){
     // return this.http.post(this.apiUrl + "/" +  id + "?_method=PUT", car);
-    return this.http.post(this.apiUrl + "/" +  id, car);
+    console.log('car service, update ' + id);
+    return this.http.put(this.apiUrl + "/" +  id, car);
   }
   deleteCar(id) {
-    console.log('car service, delete ' + id);
     return this.http.delete(this.apiUrl + '/' + id);
   }
 }
