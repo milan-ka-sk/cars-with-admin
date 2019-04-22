@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {User} from '../interfaces/user';
+import { HttpClient } from '@angular/common/http';
+
 
 //
 // this is just a fake and very simple implementation
 // just for demonstration
 //
-
-
 
 @Injectable()
 export class LoginService {
@@ -17,13 +17,9 @@ export class LoginService {
     password: "pass"
   }
 
-  constructor() { }
-  
-  login(user: User): boolean{
-    if(user.username === this.validUser.username  && user.password === this.validUser.password){
-      console.log("service true");
-      return true;
-    }
-    return false;
+  constructor(private http: HttpClient) { }
+
+  login(user: User){
+    return this.http.post('http://localhost:5000/login', user);
   }
 }

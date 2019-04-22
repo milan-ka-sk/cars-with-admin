@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-import {User} from '../../interfaces/user';
 
 
 @Component({
@@ -28,21 +27,18 @@ export class LoginComponent implements OnInit {
   login({value, valid}){
     if(valid){
 
-      let canLogin = this.loginService.login(value); // returns true or false
-
-      if(canLogin) {
-
-        localStorage.setItem("loggedIn", "yes");
-        this.router.navigateByUrl('admin/cars');
-
-      } else{
-
-        this.loginFailed = true;
-        setTimeout(function(){
-          this.loginFailed = false;
-        }.bind(this), 2000);
-
-      }
+      this.loginService.login(value)
+        .subscribe((res) => {
+          if(res === "ok"){
+            localStorage.setItem("loggedIn", "yes");
+            this.router.navigateByUrl('admin/cars');
+          } else{
+            this.loginFailed = true;
+            setTimeout(function(){
+            this.loginFailed = false;
+            }.bind(this), 2000);
+          }
+        });
 
     } else{
       console.log("Form is not valid");
