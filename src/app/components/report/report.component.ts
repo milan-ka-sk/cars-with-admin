@@ -9,7 +9,7 @@ import { CarService } from '../../services/car.service';
 })
 export class ReportComponent implements OnInit {
 
-  private cars: any;
+  cars: any;
   totalPrice = 0;
   oldest: Car = null;
   mostUsed: Car = null;
@@ -21,7 +21,6 @@ export class ReportComponent implements OnInit {
   calculate(): void {
     if (this.cars) {
       for (let c of this.cars) {
-        console.log("price " + c.price);
         this.totalPrice += c.price;
 
         if (this.oldest == null || c.year < this.oldest.year) {
@@ -49,7 +48,7 @@ export class ReportComponent implements OnInit {
       this.cars = cars;
       this.calculate();
     });
-    
+
   }
 
 }

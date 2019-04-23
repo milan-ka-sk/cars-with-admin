@@ -11,7 +11,7 @@ import { CarService } from '../../services/car.service';
 })
 export class AdminCarsListComponent implements OnInit {
 
-  public cars: any;
+  cars: any;
 
   constructor(
     private router: Router,
@@ -35,7 +35,6 @@ export class AdminCarsListComponent implements OnInit {
     if(confirm('Confirm deletion')){
       this.carService.deleteCar(id)
       .subscribe((data)=>{
-        console.log("deleteCar " + data);
         this.getCars();
       });
     }

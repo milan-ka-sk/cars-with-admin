@@ -2,7 +2,7 @@
     <h2 class="car-heading">
         {{ car.brand }} - <span>{{ car.model }}</span>
     </h2>
-    <ul class="list-group">
+    <ul class="list-group css-cols">
         <li class="list-group-item">Year built: {{ car.year }}</li>
         <li class="list-group-item">Price: {{ car.price | currency: "EUR" }}</li>
         <li class="list-group-item">Km: {{ car.km }}</li>

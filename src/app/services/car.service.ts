@@ -6,7 +6,7 @@ import {carsData} from './test-data/cars-data';
 @Injectable()
 export class CarService {
 
-  private apiUrl = 'http://localhost:5000/cars';
+  private apiUrl = 'https://mk-cars-api.herokuapp.com/cars';
 
   constructor(private http: HttpClient) {
   }

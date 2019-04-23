@@ -1,6 +1,5 @@
 export interface Engine {
-    fuel: "petrol" | "diesel" | "electric";
+    fuel: "petrol" | "diesel" ;
     power: number;
-    consumption: number; 
+    consumption: number;
 }
-                      

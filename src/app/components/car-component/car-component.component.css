@@ -1,0 +1,14 @@
+.car {
+    margin-bottom: 3em;
+    padding: 15px 15px 5px;
+    background: #eee;
+}
+
+.car-heading {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.css-cols {
+    column-count: 2;
+}

@@ -1,7 +1,7 @@
 import { Engine } from "./engine";
 
 export interface Car {
-    id: string;  
+    id?: string;
     brand: string;
     model: string;
     year: number;

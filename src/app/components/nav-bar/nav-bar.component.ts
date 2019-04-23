@@ -10,7 +10,6 @@ export class NavBarComponent implements OnInit {
   title = 'Cars';
 
   get isLoggedIn(){
-   // console.log("get isLoggedIn ");
 
     if(localStorage.getItem("loggedIn")) {
       return true;

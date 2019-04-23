@@ -66,7 +66,6 @@ export class CarFormComponent implements OnInit {
         this.carService.addCar(value)
         .subscribe(
           (v) => {
-            console.log('Car added! ' + v );
             this.router.navigateByUrl('/admin/cars');
 
           },
@@ -75,14 +74,10 @@ export class CarFormComponent implements OnInit {
           }
         )
       } else {
-        console.log('PUT');
-        console.log(value );
-        console.log(this.carID )
 
         //update car
         this.carService.updateCar(value, this.carID)
           .subscribe((res) => {
-            console.log(res);
             this.router.navigateByUrl('/admin/cars');
           });
        }
@@ -94,7 +89,6 @@ export class CarFormComponent implements OnInit {
 
   onBrandChange(e): void {
 
-    console.log(e.target.value);
     const brandName = e.target.value;
     this.curModels = this.getCurModels(brandName)
   }
@@ -105,7 +99,6 @@ export class CarFormComponent implements OnInit {
         return brand['brand'] === brandName;
       }
     )
-    console.log(tmp[0].models);
     return tmp[0].models;
   }
 }
