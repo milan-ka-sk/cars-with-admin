@@ -2,9 +2,6 @@
 <div class="alert alert-danger" *ngIf="loginFailed">
     <p>Invalid credentials.</p>
 </div>
-<!-- <div class="alert alert-success" *ngIf="userRegistered">
-    <p>Thank you for registering, you can now login.</p>
-</div>   -->
 <form novalidate #f="ngForm" (ngSubmit)="login(f)">
     <div class="form-group">
         <label for="">Username</label>
@@ -31,4 +28,5 @@
         <button class="btn btn-default" [disabled]="!f.valid">Login</button>
     </div>
 </form>
+<!-- {{ f.value | json }} {{ userName.errors | json}} {{ userPassword.errors | json}} -->
 <p>USE: <em>admin</em> as login and <em>pass</em> as password (just for demonstration)</p>

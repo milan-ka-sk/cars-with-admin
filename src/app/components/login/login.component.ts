@@ -9,6 +9,9 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
+  username: string;
+  password: string;
+
   loginFailed: boolean = false;
 
   constructor(

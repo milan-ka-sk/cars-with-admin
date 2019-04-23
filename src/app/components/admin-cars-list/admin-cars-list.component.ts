@@ -32,7 +32,7 @@ export class AdminCarsListComponent implements OnInit {
   }
 
   deleteCar(id){
-    if(confirm('Confirm deletion')){
+    if(confirm('Do you really want to delete this car?')){
       this.carService.deleteCar(id)
       .subscribe((data)=>{
         this.getCars();
