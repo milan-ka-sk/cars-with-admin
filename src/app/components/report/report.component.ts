@@ -15,6 +15,9 @@ export class ReportComponent implements OnInit {
   mostUsed: Car = null;
   mostExpensive: Car = null;
   mostEfficient: Car = null;
+  isLoading = true;
+  noCars = false;
+
 
   constructor( private carService: CarService ) { }
 
@@ -46,6 +49,15 @@ export class ReportComponent implements OnInit {
   ngOnInit() {
     this.carService.getCars().subscribe((cars) => {
       this.cars = cars;
+      this.isLoading = false;
+
+      // if all cars were deleted and there are none left
+      console.log('number of cars: ' + Object.keys(cars).length );
+      if(Object.keys(cars).length === 0 ){
+        this.noCars = true;
+      } else{
+        this.noCars = false;
+      }
       this.calculate();
     });
 

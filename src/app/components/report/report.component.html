@@ -1,6 +1,9 @@
 <div>
     <h1>Report</h1>
+    <p class="text-center" *ngIf="isLoading">... Loading ...</p>
+    <p class="text-center" *ngIf="noCars">There are no cars in the database.</p>
     <div class="table-responsive">
+
         <table class="table">
             <tr>
                 <td>Oldest Car:</td>

@@ -1,5 +1,7 @@
 <div class="row">
     <div class="col-xs-12">
+        <p class="text-center" *ngIf="isLoading">... Loading ...</p>
+        <p class="text-center" *ngIf="noCars">There are no cars in the database.</p>
         <app-car-component [car]="c" *ngFor="let c of cars"></app-car-component>
     </div>
 </div>

@@ -11,7 +11,9 @@ import { CarService } from '../../services/car.service';
 })
 export class AdminCarsListComponent implements OnInit {
 
-  cars: any;
+  cars : any;
+  noCars = false;
+  isLoading = true;
 
   constructor(
     private router: Router,
@@ -28,6 +30,16 @@ export class AdminCarsListComponent implements OnInit {
   getCars(): void {
     this.carService.getCars().subscribe((cars) => {
       this.cars = cars;
+      this.isLoading = false;
+
+      // if all cars were deleted and there are none left
+      console.log('number of cars: ' + Object.keys(cars).length );
+      if(Object.keys(cars).length === 0 ){
+        this.noCars = true;
+      } else{
+        this.noCars = false;
+      }
+
     });
   }
 

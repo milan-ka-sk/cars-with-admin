@@ -1,5 +1,6 @@
 <a [routerLink]="['/admin/add-car']" class="btn btn-success btn-large btn-add-car">Add new car</a>
-
+<p class="text-center" *ngIf="isLoading">... Loading ...</p>
+<p class="text-center" *ngIf="noCars">There are no cars in the database.</p>
 <div class="row">
     <div class="col-xs-12">
         <app-car-component [car]="c" *ngFor="let c of cars">
